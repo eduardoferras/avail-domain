@@ -1,0 +1,63 @@
+.container {
+	@include container;
+	min-height: 100vh;
+
+	.section {
+		margin-top: 2.4rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.4rem;
+
+		.title {
+			color: #000;
+			text-align: center;
+			font-family: var(--font-primary);
+			font-size: 2rem;
+			font-style: normal;
+			font-weight: 700;
+			line-height: normal;
+		}
+
+		.paragraph {
+			color: #4F6066;
+			text-align: center;
+			font-family: var(--font-primary);
+			font-size: 1.6rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			width: 80vw;
+		}
+
+		input[type="file"] {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			border: 0;
+			padding: 0;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    	clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+    	clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+    	white-space: nowrap;
+		}
+
+		.label {
+			border-radius: .4rem;
+			border: 0;
+			padding: 1.6rem 2.4rem;
+			background: #209416;
+			color: #FFF;
+			font-family: var(--font-primary);
+			font-size: 1.6rem;
+			font-style: normal;
+			font-weight: 700;
+			line-height: normal;
+			width: fit-content;
+			cursor: pointer;
+			display: inline-block;
+		}
+
+	}
+}
