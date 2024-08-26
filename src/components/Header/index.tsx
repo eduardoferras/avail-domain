@@ -10,7 +10,7 @@ export default function Header() {
 				<ul>
 					<li>
 						<Link href="/">
-							<Image src={logo} alt="logo avail domain"></Image>
+							<Image src={logo} alt="logo avail domain" />
 						</Link>
 					</li>
 				</ul>
