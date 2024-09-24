@@ -1,0 +1,32 @@
+#!/bin/bash
+function option_help() {
+    echo "$0 <command>"
+    echo
+    echo "Usage:"
+    echo
+    echo "$0 start              Start the development server"
+    echo "$0 stop               Stop the development server"
+    echo "$0 docker <command>   Execute commands inside Docker container"
+    echo 
+    echo "Unknow commands are passed to the docker compose"
+    echo "$0 <command Docker>"
+    exit 1
+}
+
+if [ $# -gt 0 ]; then
+    if [ "$1" == "help" ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+        option_help
+    elif [ "$1" == "start" ]; then
+        docker compose up -d --build \
+        && docker compose exec app bash
+    elif [ "$1" == "stop" ]; then
+        docker compose down
+    elif [ "$1" == "docker" ]; then
+        shift 1
+        docker compose run --rm app "$@"
+    else
+        docker compose "$@"
+    fi
+else
+    option_help
+fi
