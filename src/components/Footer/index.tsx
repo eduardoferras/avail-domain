@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '@/images/logo-avail-domain.svg'
 import S from './styles.module.scss'
 
 export default function Footer() {
