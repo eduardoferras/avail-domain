@@ -1,6 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Avail Domain
 
-## Getting Started
+## Development with [Docker](https://docs.docker.com/engine/install/)
+
+`./dev` allows you to quickly run development server and execute commands inside docker container.
+
+#### Start the development server
+```bash
+./dev start
+```
+Open [http://localhost:3001](http://localhost:3001)
+
+#### Stop the development server
+```bash
+./dev stop
+```
+
+#### For more information
+```bash
+./dev
+```
+
+#### Ease of use
+To make it easier to run the commands, you can add the following alias to your `~/.bashrc`, `~/.profile`, or `~/.zshrc` file.
+
+```bash
+alias dev='./dev'
+```
+
+## Running Locally
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
@@ -34,3 +63,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+<a target="_blank" href="https://icons8.com/icon/13654/microsoft-excel">Excel</a> Icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a target="_blank" href="https://icons8.com/icon/8112/close">Excluir</a> ícone por <a target="_blank" href="https://icons8.com">Icons8</a>

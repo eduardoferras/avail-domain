@@ -3,7 +3,7 @@ module.exports = {
 		browser: true,
 		es2021: true,
 	},
-	extends: ['next/core-web-vitals', 'plugin:prettier/recommended'],
+	extends: ['next/core-web-vitals', 'plugin:prettier/recommended', 'plugin:import/warnings', 'plugin:import/errors'],
 	overrides: [
 		{
 			env: {

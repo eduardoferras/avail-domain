@@ -1,4 +1,8 @@
 .section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	input[type="file"] {
 		position: absolute;
 		width: 1px;
