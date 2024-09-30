@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import logo from '@/images/logo-avail-domain.svg'
 import S from './styles.module.scss'
+import Icon from '../UI/Icon'
 
 export default function Header() {
 	return (
@@ -10,7 +9,7 @@ export default function Header() {
 				<ul>
 					<li>
 						<Link href="/">
-							<Image src={logo} alt="logo avail domain" />
+							<Icon name="logo-avail-domain" width="182" height="25" />
 						</Link>
 					</li>
 				</ul>
