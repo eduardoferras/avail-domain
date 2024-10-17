@@ -7,10 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "docker": "node --env-file=.env.local ./src/scripts/runAppDocker"
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "nanoid": "^5.0.7",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
