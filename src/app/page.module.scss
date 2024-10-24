@@ -1,25 +1,17 @@
 .container {
 	@include container;
-	margin-top: 2.4rem;
-	flex-grow: 1;
 
-	.section {
+	.Upload {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 2.4rem;
 
-		.title {
-			color: #000;
-			text-align: center;
-			font-family: var(--font-primary);
-			font-size: 2rem;
-			font-style: normal;
-			font-weight: 700;
-			line-height: normal;
+		&__title {
+			@include titlePage
 		}
 
-		.paragraph {
+		&__description {
 			color: #4F6066;
 			text-align: center;
 			font-family: var(--font-primary);
@@ -30,34 +22,69 @@
 			width: 80vw;
 		}
 
-		input[type="file"] {
-			position: absolute;
-			width: 1px;
-			height: 1px;
-			overflow: hidden;
-			border: 0;
-			padding: 0;
-			clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-    	clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
-    	clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
-    	white-space: nowrap;
+		&__list {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 30px;
+			margin-bottom: 30px;
+
+			&__item {
+				padding: 16px 24px;
+				background-color: #fff;
+				width: 80vw;
+				border-radius: 4px;
+				color: #47474F;
+				font-family: var(--font-primary);
+				font-size: 1.4rem;
+				font-style: normal;
+				font-weight: 400;
+				text-transform: lowercase;
+				line-height: normal;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 8px;
+
+				@media only screen and (min-width: 1024px) {
+					width: 40vw;
+				}
+
+				&__name {
+					display: -webkit-box;
+					-webkit-line-clamp: 1;
+					line-clamp: 1;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					max-width: 33vw;
+				}
+
+				&__remove {
+					cursor: pointer;
+					width:24px;
+					height:24px;
+					fill:#47474F;
+				}
+			}
 		}
 
-		.label {
-			border-radius: .4rem;
-			border: 0;
-			padding: 1.6rem 2.4rem;
-			background: #209416;
-			color: #FFF;
-			font-family: var(--font-primary);
-			font-size: 1.6rem;
-			font-style: normal;
-			font-weight: 700;
-			line-height: normal;
-			width: fit-content;
-			cursor: pointer;
-			display: inline-block;
-		}
+		&__form {
+			&__btn {
+				@include btnAction;
 
+				&__file {
+					position: absolute;
+					width: 1px;
+					height: 1px;
+					overflow: hidden;
+					border: 0;
+					padding: 0;
+					clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+					clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+					clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+					white-space: nowrap;
+				}
+			}
+		}
 	}
 }

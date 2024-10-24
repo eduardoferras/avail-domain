@@ -1,10 +1,45 @@
 @mixin desktop {
-    @media screen and (min-width: 1024px) {
-        @content;
-    }
+	@media screen and (min-width: 1024px) {
+			@content;
+	}
 }
 
 @mixin container {
-		width: 90%;
-		margin: 0 auto;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 2.4rem;
+	flex-grow: 1;
+}
+
+@mixin section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.4rem;
+}
+
+@mixin titlePage {
+	color: #000;
+	text-align: center;
+	font-family: var(--font-primary);
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+@mixin btnAction {
+	border-radius: .4rem;
+	border: 0;
+	padding: 1.6rem 2.4rem;
+	background: #209416;
+	color: #FFF;
+	font-family: var(--font-primary);
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	width: fit-content;
+	cursor: pointer;
+	display: inline-block;
 }
