@@ -4,16 +4,11 @@ import { ChangeEvent, useState } from 'react'
 import Icon from '@/components/UI/Icon'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/navigation'
-import Loading from '@/components/Loading'
-
-interface fileProps {
-	id: string
-	name: string
-	file: File
-}
+import { FileItem, FileItems } from '@/types'
+import Loading from '@/components/UI/Loading'
 
 export default function Home() {
-	const [filesSelected, setFilesSelected] = useState<fileProps[]>([])
+	const [filesSelected, setFilesSelected] = useState<FileItems>([])
 	const [isLoading, setIsLoading] = useState(false)
 	const router = useRouter()
 
@@ -22,7 +17,7 @@ export default function Home() {
 
 		if (!fileList) return
 
-		const arrayFiles: fileProps[] = Array.from(fileList).map((file) => ({
+		const arrayFiles: FileItems = Array.from(fileList).map((file) => ({
 			file,
 			name: file.name,
 			id: nanoid(),
@@ -31,7 +26,7 @@ export default function Home() {
 		setFilesSelected(filesSelected.concat(arrayFiles))
 	}
 
-	function handleRemoveFile(id: fileProps['id']): void {
+	function handleRemoveFile(id: FileItem['id']): void {
 		if (!filesSelected) return
 
 		const newFiles = filesSelected.filter((item) => item.id !== id)
@@ -42,8 +37,8 @@ export default function Home() {
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
 		setIsLoading(true)
 		e.preventDefault()
-		const formMethod = e.currentTarget.method
-		const formURL = e.currentTarget.action
+
+		const { method, action: urlReq } = e.currentTarget
 
 		if (!filesSelected.length) return
 
@@ -54,8 +49,8 @@ export default function Home() {
 				dataForm.append('files', file.file)
 			})
 
-			await fetch(formURL, {
-				method: formMethod,
+			await fetch(urlReq, {
+				method,
 				body: dataForm,
 			})
 				.then((res) => {
@@ -68,8 +63,8 @@ export default function Home() {
 				.then((fileBlob) => {
 					const urlFile = URL.createObjectURL(fileBlob)
 					router.push(`/download/${urlFile}`)
-					setIsLoading(false)
 				})
+				.finally(() => setIsLoading(false))
 		} catch (error) {
 			console.error(error)
 		}
@@ -83,9 +78,9 @@ export default function Home() {
 				<section className={S.Upload}>
 					<h1 className={S.Upload__title}>Verificar disponibilidade domínio no Registro.br</h1>
 					<p className={S.Upload__description}>Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.</p>
-					{filesSelected.length && (
+					{filesSelected.length > 0 && (
 						<ul className={S.Upload__list}>
-							{filesSelected.map((file: fileProps) => (
+							{filesSelected.map((file: FileItem) => (
 								<li key={file.id} className={S.Upload__list__item}>
 									<Icon name="excel" width="32" height="32" />
 									<span className={S.Upload__list__item__name}>{file.name}</span>
@@ -95,7 +90,7 @@ export default function Home() {
 						</ul>
 					)}
 					<form onSubmit={handleSubmit} className={S.Upload__form} method="POST" action="/api/upload" encType="multiplart/form-data">
-						{filesSelected.length ? (
+						{filesSelected.length > 0 ? (
 							<button type="submit" className={S.Upload__form__btn}>
 								Consultar Nomes
 							</button>

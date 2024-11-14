@@ -1,5 +1,6 @@
 .container {
 	@include container;
+	margin-top: 2.4rem;
 
 	.Upload {
 		display: flex;

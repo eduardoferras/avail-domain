@@ -36,6 +36,7 @@ next-env.d.ts
 
 # docker
 Dockerfile
+docker
 .dockerignore
 ./dev
 

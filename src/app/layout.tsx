@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/reset.scss'
 import '@/styles/globals.scss'
 import { openSans } from '@/fonts'
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 
 export const metadata: Metadata = {
 	title: 'Avail Domain - Verificar disponibilidade domínio no Registro.br',
