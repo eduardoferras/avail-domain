@@ -61,10 +61,10 @@ export default function Home() {
 					return res.blob()
 				})
 				.then((fileBlob) => {
-					const urlFile = URL.createObjectURL(fileBlob)
-					router.push(`/download/${urlFile}`)
+					// const urlFile = URL.createObjectURL(new Blob([fileBlob]))
+					// router.push(`/download/${urlFile.split('/').slice(3)}`)
+					router.push(`/download/file-example-download`)
 				})
-				.finally(() => setIsLoading(false))
 		} catch (error) {
 			console.error(error)
 		}

@@ -5,12 +5,12 @@ import { useParams } from 'next/navigation'
 
 export default function Download() {
 	const btnDownload = useRef<HTMLAnchorElement>(null)
-	const { urlFile } = useParams<{ urlFile: string }>()
+	// const { urlFile } = useParams<{ urlFile: string }>()
 
 	useEffect(() => {
 		setTimeout(() => {
 			if (btnDownload.current) {
-				// btnDownload.current.click()
+				btnDownload.current.click()
 			}
 		}, 1000)
 	}, [])
@@ -18,7 +18,8 @@ export default function Download() {
 		<main className={S.container}>
 			<section className={S.Download}>
 				<h1 className={S.Download__title}>Domínios consultados no RegistroBR</h1>
-				<a href={`/${urlFile}`} className={S.Download__btn} ref={btnDownload} download={true}>
+				{/* <a href={`blob:${window.location.origin}/${urlFile}`} className={S.Download__btn} ref={btnDownload} download={true}> */}
+				<a href="/file-example-download.xlsx" className={S.Download__btn} ref={btnDownload} download={true}>
 					Baixar nomes consultados
 				</a>
 			</section>

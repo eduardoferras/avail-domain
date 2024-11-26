@@ -4,6 +4,7 @@ import { createWriteStream } from 'fs'
 import { headers } from 'next/headers'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
+import path from 'path'
 
 export async function POST(req: NextRequest, res: NextResponse) {
 	const fileFormData = await req.formData()
@@ -26,7 +27,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 	const outStream = new Writable({
 		write(chunk, encoding, callback) {
-			console.log(chunk)
 			callback()
 		},
 	})
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 	}) as unknown as Blob
 
 	const newHeaders = new Headers()
-	newHeaders.set('Content-Disposition', `attachment; filename="teste"`)
+	newHeaders.set('Content-Disposition', `attachment; filename="teste.xlsx"`)
 	newHeaders.set('Content-Type', 'xlsx')
 
 	return new NextResponse(blobStream, {
