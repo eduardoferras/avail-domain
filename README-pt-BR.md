@@ -13,11 +13,25 @@
 </h4>
 
 [English](./README.md) •
+[Layout](#layout) •
+[Acessibilidade](#acessibilidade) •
 [Docker](#-desenvolver-com-docker) •
 [Executar Local](#executar-local)
 
 ![Demo](./assets/demo-gif.gif)
+
 </div>
+
+## Layout
+<div align="center">
+	<img src="./assets/preview-screens.png" />
+</div>
+
+## Acessibilidade
+
+### axe DevTools - Teste de acessibilidade da Web
+
+![axe DevTools - Teste de acessibilidade da Web](./assets/axe-devtools-scan-result.png)
 
 ## 💻 Desenvolver com [Docker](https://docs.docker.com/engine/install/)
 
@@ -63,19 +77,6 @@ bun dev
 ```
 
 Abrir [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
-
-Você pode começar a editar a página modificando `app/page.tsx`. A página é atualizada automaticamente conforme você edita o arquivo.
-
-Esse projeto usa [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) para otimizar e carregar automaticamente a Inter, uma fonte personalizada do Google.
-
-## Saber mais
-
-Para saber mais sobre Next.js, dê uma olhada nos seguintes recursos:
-
-- [Documentação Next.js](https://nextjs.org/docs) - aprender sobre os recursos e API do Next.js.
-- [Aprender Next.js](https://nextjs.org/learn) - um tutorial interativo do Next.js.
-
-Você pode conferir [o repositório GitHub do Next.js](https://github.com/vercel/next.js/) - seus comentários e contribuições são bem-vindos!
 
 ## Deploy na Vercel
 
