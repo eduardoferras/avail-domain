@@ -79,12 +79,20 @@ export default function Home() {
 					<h1 className={S.Upload__title}>Verificar disponibilidade domínio no Registro.br</h1>
 					<p className={S.Upload__description}>Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.</p>
 					{filesSelected.length > 0 && (
-						<ul className={S.Upload__list}>
+						<ul className={S.Upload__list} aria-live={'polite'}>
 							{filesSelected.map((file: FileItem) => (
 								<li key={file.id} className={S.Upload__list__item}>
-									<Icon name="excel" width="32" height="32" />
+									<Icon ariahidden alt="Ícone excel" name="excel" width="32" height="32" />
 									<span className={S.Upload__list__item__name}>{file.name}</span>
-									<Icon className={S.Upload__list__item__remove} name="remove" onClick={() => handleRemoveFile(file.id)} />
+									<button className={S.Upload__list__item__btn} aria-label="Remover arquivo">
+										<Icon
+											className={S.Upload__list__item__btn__remove}
+											alt="Ícone remover item"
+											name="remove"
+											onClick={() => handleRemoveFile(file.id)}
+											ariahidden
+										/>
+									</button>
 								</li>
 							))}
 						</ul>
@@ -95,7 +103,7 @@ export default function Home() {
 								Consultar Nomes
 							</button>
 						) : (
-							<label htmlFor="uploadFile" className={S.Upload__form__btn}>
+							<label htmlFor="uploadFile" className={S.Upload__form__btn} tabIndex={0}>
 								Selecionar arquivo EXCEL
 								<input
 									className={S.Upload__form__btn__file}
@@ -110,7 +118,6 @@ export default function Home() {
 										.xls,
 										application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
 										application/vnd.ms-excel"
-									aria-required="true"
 									required
 								/>
 							</label>

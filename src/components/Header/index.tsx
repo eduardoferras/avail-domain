@@ -8,8 +8,8 @@ export default function Header() {
 			<nav aria-label="Main">
 				<ul className={S.header__nav__list}>
 					<li>
-						<Link href="/">
-							<Icon name="logo-avail-domain" width="182" height="25" />
+						<Link href="/" aria-label="Página Inicial Avail Domain">
+							<Icon name="logo-avail-domain" alt="logo da Avail Domain" width="182" height="25" />
 						</Link>
 					</li>
 				</ul>

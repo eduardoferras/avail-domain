@@ -13,7 +13,7 @@
 		}
 
 		&__description {
-			color: #4F6066;
+			color: #405157;
 			text-align: center;
 			font-family: var(--font-primary);
 			font-size: 1.6rem;
@@ -60,11 +60,15 @@
 					max-width: 33vw;
 				}
 
-				&__remove {
-					cursor: pointer;
-					width:24px;
-					height:24px;
-					fill:#47474F;
+				&__btn {
+					background: none;
+
+					&__remove {
+						cursor: pointer;
+						width:24px;
+						height:24px;
+						fill:#47474F;
+					}
 				}
 			}
 		}
