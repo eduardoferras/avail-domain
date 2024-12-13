@@ -24,14 +24,14 @@
 
 ## Layout
 <div align="center">
-	<img src="./assets/preview-screens.png" />
+	<img src="./assets/preview-screens.png" alt="telas do aplicativo" />
 </div>
 
 ## Acessibilidade
 
 ### axe DevTools - Teste de acessibilidade da Web
 
-![axe DevTools - Teste de acessibilidade da Web](./assets/axe-devtools-scan-result.png)
+![Printscreen axe DevTools - Teste de acessibilidade da Web](./assets/axe-devtools-scan-result.png)
 
 ## 💻 Desenvolver com [Docker](https://docs.docker.com/engine/install/)
 

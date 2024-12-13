@@ -22,14 +22,14 @@
 
 ## Layout
 <div align="center">
-	<img src="./assets/preview-screens.png" />
+	<img src="./assets/preview-screens.png" alt="application screens" />
 </div>
 
 ## Accessibility
 
 ### axe DevTools - Web Accessibility Testing
 
-![axe DevTools - Web Accessibility Testing](./assets/axe-devtools-scan-result.png)
+![Printscreen axe DevTools - Web Accessibility Testing](./assets/axe-devtools-scan-result.png)
 
 
 ## 💻 Development with [Docker](https://docs.docker.com/engine/install/)
