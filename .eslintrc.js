@@ -3,7 +3,12 @@ module.exports = {
 		browser: true,
 		es2021: true,
 	},
-	extends: ['next/core-web-vitals', 'plugin:prettier/recommended', 'plugin:import/warnings', 'plugin:import/errors'],
+	extends: [
+		'next/core-web-vitals',
+		'plugin:prettier/recommended',
+		'plugin:import/warnings',
+		'plugin:import/errors',
+	],
 	overrides: [
 		{
 			env: {
@@ -24,7 +29,7 @@ module.exports = {
 			'error',
 			{
 				useTabs: true,
-				printWidth: 140,
+				printWidth: 80,
 				tabWidth: 2,
 				singleQuote: true,
 				trailingComma: 'all',
