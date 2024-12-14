@@ -1,0 +1,49 @@
+.Upload__list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3rem;
+	margin-bottom: 3rem;
+
+	&__item {
+		padding: 1.6rem 2.4rem;
+		background-color: #fff;
+		width: 80vw;
+		border-radius: .4rem;
+		color: #47474F;
+		font-family: var(--font-primary);
+		font-size: 1.4rem;
+		font-style: normal;
+		font-weight: 400;
+		text-transform: lowercase;
+		line-height: normal;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: .8rem;
+
+		@media only screen and (min-width: 1024px) {
+			width: 40vw;
+		}
+
+		&__name {
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			line-clamp: 1;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			max-width: 33vw;
+		}
+
+		&__btn {
+			background: none;
+
+			&__remove {
+				cursor: pointer;
+				width: 2.4rem;
+				height:2.4rem;
+				fill:#47474F;
+			}
+		}
+	}
+}
