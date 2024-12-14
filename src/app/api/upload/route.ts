@@ -35,7 +35,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
 		const wb = read(file, { dense: true })
 		const firstWs = wb.Sheets[wb.SheetNames[0]]
 		stream.set_readable(Readable)
-		stream.to_json(firstWs, { header: 1, blankrows: false }).pipe(trans).pipe(process.stdout)
+		stream
+			.to_json(firstWs, { header: 1, blankrows: false })
+			.pipe(trans)
+			.pipe(process.stdout)
 	}) as unknown as Blob
 
 	const newHeaders = new Headers()

@@ -17,9 +17,16 @@ export default function Download() {
 	return (
 		<main className={S.container}>
 			<section className={S.Download}>
-				<h1 className={S.Download__title}>Domínios consultados no RegistroBR</h1>
+				<h1 className={S.Download__title}>
+					Domínios consultados no RegistroBR
+				</h1>
 				{/* <a href={`blob:${window.location.origin}/${urlFile}`} className={S.Download__btn} ref={btnDownload} download={true}> */}
-				<a href="/file-example-download.xlsx" className={S.Download__btn} ref={btnDownload} download={true}>
+				<a
+					href="/file-example-download.xlsx"
+					className={S.Download__btn}
+					ref={btnDownload}
+					download={true}
+				>
 					Baixar nomes consultados
 				</a>
 			</section>

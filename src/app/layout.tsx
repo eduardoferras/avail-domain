@@ -6,7 +6,8 @@ import Header from '@/components/Header'
 
 export const metadata: Metadata = {
 	title: 'Avail Domain - Verificar disponibilidade domínio no Registro.br',
-	description: 'Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.',
+	description:
+		'Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.',
 }
 
 export default function RootLayout({
