@@ -1,4 +1,4 @@
-import S from './style.module.scss'
+import S from './styles.module.scss'
 
 export default function Loading() {
 	return (
