@@ -27,6 +27,12 @@
 			"@/images/*": ["public/images/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	 "ts-node": {
+		"compilerOptions": {
+			"module": "ESNext",
+			"moduleResolution": "Node"
+		}
+	},
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/tests/resolver.js"],
   "exclude": ["node_modules"]
 }
