@@ -9,11 +9,11 @@
 		gap: 2.4rem;
 
 		&__title {
-			@include titlePage
+			@include titlePage;
 		}
 
 		&__description {
-			color: #405157;
+			color: $textColor;
 			text-align: center;
 			font-family: var(--font-primary);
 			font-size: 1.6rem;
@@ -27,14 +27,14 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 30px;
-			margin-bottom: 30px;
+			gap: 3rem;
+			margin-bottom: 3rem;
 
 			&__item {
-				padding: 16px 24px;
+				padding: 1.6rem 2.4rem;
 				background-color: #fff;
 				width: 80vw;
-				border-radius: 4px;
+				border-radius: .4rem;
 				color: #47474F;
 				font-family: var(--font-primary);
 				font-size: 1.4rem;
@@ -45,7 +45,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				gap: 8px;
+				gap: .8rem;
 
 				@media only screen and (min-width: 1024px) {
 					width: 40vw;
@@ -65,8 +65,8 @@
 
 					&__remove {
 						cursor: pointer;
-						width:24px;
-						height:24px;
+						width: 2.4rem;
+						height:2.4rem;
 						fill:#47474F;
 					}
 				}
@@ -78,18 +78,14 @@
 				@include btnAction;
 
 				&__file {
-					position: absolute;
-					width: 1px;
-					height: 1px;
-					overflow: hidden;
-					border: 0;
-					padding: 0;
-					clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-					clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
-					clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
-					white-space: nowrap;
+					@include visuallyHidden;
+					display: none;
 				}
 			}
 		}
 	}
+}
+
+.Message {
+	@include visuallyHidden;
 }
