@@ -38,9 +38,13 @@
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
-	width: fit-content;
+	width: 100%;
 	cursor: pointer;
 	display: inline-block;
+
+	@include desktop {
+		width: fit-content;
+	}
 
 	&:hover {
 		background: $btnHoverColor;
