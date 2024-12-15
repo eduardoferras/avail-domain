@@ -1,0 +1,10 @@
+.Upload__form {
+	&__btn {
+		@include btnAction;
+
+		&__file {
+			@include visuallyHidden;
+			display: none;
+		}
+	}
+}
