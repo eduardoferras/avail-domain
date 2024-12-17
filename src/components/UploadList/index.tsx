@@ -31,6 +31,7 @@ export default function UploadList({
 		})
 
 		setMessage('Arquivo adicionado')
+		if (hiddenInputFile.current) hiddenInputFile.current.value = ''
 	}
 
 	async function handleSubmit(
@@ -81,19 +82,18 @@ export default function UploadList({
 				action="/api/upload"
 				encType="multiplart/form-data"
 			>
-				{files.length > 0 ? (
+				<button
+					className={S.Upload__form__btn}
+					onClick={() => hiddenInputFile.current?.click()}
+					type="button"
+				>
+					{files.length > 0
+						? 'Adicionar Arquivo Excel'
+						: 'Selecionar Arquivo Excel'}
+				</button>
+				{files.length > 0 && (
 					<button type="submit" className={S.Upload__form__btn}>
 						Consultar Nomes
-					</button>
-				) : (
-					<button
-						className={S.Upload__form__btn}
-						onClick={() => hiddenInputFile.current?.click()}
-						type="button"
-					>
-						{files.length > 0
-							? 'Adicionar Arquivo Excel'
-							: 'Selecionar Arquivo Excel'}
 					</button>
 				)}
 				<input
