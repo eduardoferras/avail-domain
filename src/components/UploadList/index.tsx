@@ -1,19 +1,19 @@
 import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from 'react'
 import S from './styles.module.scss'
-import { FileItems } from '@/types'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/navigation'
 import UploadItem from './UploadItem'
+import { useFileStore } from '@/store/File'
 
 export default function UploadList({
 	setLoading,
 }: {
 	setLoading: Dispatch<SetStateAction<boolean>>
 }) {
-	const [filesSelected, setFilesSelected] = useState<FileItems>([])
 	const hiddenInputFile = useRef<HTMLInputElement>(null)
 	const [message, setMessage] = useState('')
 	const router = useRouter()
+	const { addFile, files } = useFileStore()
 
 	function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
 		const fileList = e.target.files
@@ -22,14 +22,15 @@ export default function UploadList({
 
 		// validar extensao arquivos.
 
-		const arrayFiles: FileItems = Array.from(fileList).map((file) => ({
-			file,
-			name: file.name,
-			id: nanoid(),
-		}))
+		Array.from(fileList).forEach((file) => {
+			addFile({
+				file,
+				name: file.name,
+				id: nanoid(),
+			})
+		})
 
 		setMessage('Arquivo adicionado')
-		setFilesSelected(filesSelected.concat(arrayFiles))
 	}
 
 	async function handleSubmit(
@@ -40,12 +41,12 @@ export default function UploadList({
 
 		const { method, action: urlReq } = e.currentTarget
 
-		if (!filesSelected.length) return
+		if (!files.length) return
 
 		try {
 			const dataForm = new FormData()
 
-			filesSelected.forEach((file) => {
+			files.forEach((file) => {
 				dataForm.append('files', file.file)
 			})
 
@@ -72,7 +73,7 @@ export default function UploadList({
 
 	return (
 		<>
-			<UploadItem files={filesSelected} setFiles={setFilesSelected} />
+			<UploadItem />
 			<form
 				onSubmit={handleSubmit}
 				className={S.Upload__form}
@@ -80,7 +81,7 @@ export default function UploadList({
 				action="/api/upload"
 				encType="multiplart/form-data"
 			>
-				{filesSelected.length > 0 ? (
+				{files.length > 0 ? (
 					<button type="submit" className={S.Upload__form__btn}>
 						Consultar Nomes
 					</button>
@@ -90,7 +91,7 @@ export default function UploadList({
 						onClick={() => hiddenInputFile.current?.click()}
 						type="button"
 					>
-						{filesSelected.length > 0
+						{files.length > 0
 							? 'Adicionar Arquivo Excel'
 							: 'Selecionar Arquivo Excel'}
 					</button>

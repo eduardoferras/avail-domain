@@ -1,24 +1,10 @@
-import { FileItem, FileItems } from '@/types'
+import { FileItem } from '@/types'
 import Icon from '../UI/Icon'
-import { Dispatch, SetStateAction } from 'react'
 import S from './styles.module.scss'
+import { useFileStore } from '@/store/File'
 
-export default function UploadItem({
-	files,
-	setFiles,
-}: {
-	files: FileItems
-	setFiles: Dispatch<SetStateAction<FileItems>>
-}) {
-	function handleRemoveFile(
-		id: FileItem['id'],
-		files: FileItems,
-		setFiles: Dispatch<SetStateAction<FileItems>>,
-	): void {
-		if (!files) return
-
-		setFiles(files.filter((item) => item.id !== id))
-	}
+export default function UploadItem() {
+	const { files, removeFile } = useFileStore()
 
 	return (
 		<>
@@ -34,7 +20,7 @@ export default function UploadItem({
 							<button
 								className={S.Upload__list__item__btn}
 								aria-label="Remover arquivo"
-								onClick={() => handleRemoveFile(file.id, files, setFiles)}
+								onClick={() => removeFile(file.id)}
 							>
 								<Icon
 									className={S.Upload__list__item__btn__remove}
