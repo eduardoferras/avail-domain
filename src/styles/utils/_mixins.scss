@@ -41,6 +41,7 @@
 	width: 100%;
 	cursor: pointer;
 	display: inline-block;
+	text-align: center;
 
 	@include desktop {
 		width: fit-content;
