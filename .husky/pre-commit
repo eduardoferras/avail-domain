@@ -1,0 +1,11 @@
+echo "Checking for lint errors"
+npm run lint:fix || (
+	echo "Please fix the lint errors before commit" && exit 1
+)
+
+echo "Running test before commit"
+npm test || (
+	echo "Please fix the test errors before commit" && exit 1
+)
+
+echo "Done"
