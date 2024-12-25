@@ -111,7 +111,6 @@ export default function UploadList({
 									.xls,
 									application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
 									application/vnd.ms-excel"
-					required
 					aria-hidden
 				/>
 			</form>
