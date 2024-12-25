@@ -1,10 +1,12 @@
 import { FileItem } from '@/types'
 import Icon from '../UI/Icon'
 import S from './styles.module.scss'
-import { useFileStore } from '@/store/File'
+import useRemoveFile from '@/hooks/File/useRemoveFile'
+import useListFile from '@/hooks/File/useListFile'
 
 export default function UploadItem() {
-	const { files, removeFile } = useFileStore()
+	const removeFile = useRemoveFile()
+	const files = useListFile()
 
 	return (
 		<>

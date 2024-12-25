@@ -3,7 +3,8 @@ import S from './styles.module.scss'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/navigation'
 import UploadItem from './UploadItem'
-import { useFileStore } from '@/store/File'
+import useAddFile from '@/hooks/File/useAddFile'
+import useListFile from '@/hooks/File/useListFile'
 
 export default function UploadList({
 	setLoading,
@@ -13,7 +14,9 @@ export default function UploadList({
 	const hiddenInputFile = useRef<HTMLInputElement>(null)
 	const [message, setMessage] = useState('')
 	const router = useRouter()
-	const { addFile, files } = useFileStore()
+	const addFile = useAddFile()
+
+	const files = useListFile()
 
 	function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
 		const fileList = e.target.files
@@ -109,7 +112,7 @@ export default function UploadList({
 									application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
 									application/vnd.ms-excel"
 					required
-					aria-hidden="true"
+					aria-hidden
 				/>
 			</form>
 		</>
