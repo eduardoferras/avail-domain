@@ -10,4 +10,10 @@ describe('Page', () => {
 
 		expect(heading).toBeInTheDocument()
 	})
+
+	it('should be rendered correctly', () => {
+		const { container } = render(<Page />)
+
+		expect(container).toMatchSnapshot()
+	})
 })

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page should be rendered correctly 1`] = `
+<div>
+  <main
+    class="container"
+  >
+    <section
+      class="Upload"
+    >
+      <h1
+        class="Upload__title"
+      >
+        Verificar disponibilidade domínio no Registro.br
+      </h1>
+      <p
+        class="Upload__description"
+      >
+        Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.
+      </p>
+      <form
+        action="/api/upload"
+        class="Upload__form"
+        enctype="multiplart/form-data"
+        method="POST"
+      >
+        <button
+          class="Upload__form__btn"
+          type="button"
+        >
+          Selecionar Arquivo Excel
+        </button>
+        <input
+          accept="          .xlsx,          .xls,          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,          application/vnd.ms-excel"
+          aria-hidden="true"
+          class="Upload__form__btn__file"
+          id="uploadFile"
+          multiple=""
+          type="file"
+        />
+      </form>
+    </section>
+  </main>
+</div>
+`;
