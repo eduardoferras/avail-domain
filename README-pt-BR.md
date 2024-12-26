@@ -14,6 +14,7 @@
 
 [English](./README.md) •
 [Layout](#layout) •
+[Tecnologias](#tecnologias) •
 [Acessibilidade](#acessibilidade) •
 [Docker](#-desenvolver-com-docker) •
 [Executar Local](#executar-local)
@@ -26,6 +27,20 @@
 <div align="center">
 	<img src="./assets/preview-screens.png" alt="telas do aplicativo" />
 </div>
+
+## Tecnologias
+- [Next.js](https://nextjs.org/) - Framework React
+- [React](https://react.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/) - Estilos
+- [Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction) - Gereciador de estados React
+- [Sheetjs](https://sheetjs.com/) - Manipular planilhas
+- [nanoid](https://www.npmjs.com/package/nanoid) - Gerador de ID Único
+- [Jest](https://jestjs.io/) - Testes
+- [ESlint](https://eslint.org/) - Linter
+- [Prettier](https://prettier.io/) - Formatar Código
+- [husky](https://typicode.github.io/husky/) - GitHooks
+- [commitlint](https://commitlint.js.org/) - Formatar Commits
 
 ## Acessibilidade
 
