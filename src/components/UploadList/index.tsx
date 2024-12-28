@@ -1,16 +1,16 @@
-import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from 'react'
+'use client'
+import { ChangeEvent, useRef, useState } from 'react'
 import S from './styles.module.scss'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/navigation'
 import UploadItem from './UploadItem'
 import useAddFile from '@/hooks/File/useAddFile'
 import useListFile from '@/hooks/File/useListFile'
+import Loading from '../UI/Loading'
+import { fetchDomain } from '@/lib/fetchDomain'
 
-export default function UploadList({
-	setLoading,
-}: {
-	setLoading: Dispatch<SetStateAction<boolean>>
-}) {
+export default function UploadList() {
+	const [isLoading, setIsLoading] = useState(false)
 	const hiddenInputFile = useRef<HTMLInputElement>(null)
 	const [message, setMessage] = useState('')
 	const router = useRouter()
@@ -22,8 +22,6 @@ export default function UploadList({
 		const fileList = e.target.files
 
 		if (!fileList) return
-
-		// validar extensao arquivos.
 
 		Array.from(fileList).forEach((file) => {
 			addFile({
@@ -40,50 +38,33 @@ export default function UploadList({
 	async function handleSubmit(
 		e: React.FormEvent<HTMLFormElement>,
 	): Promise<void> {
-		setLoading(true)
+		setIsLoading(true)
 		e.preventDefault()
 
 		const { method, action: urlReq } = e.currentTarget
 
 		if (!files.length) return
 
-		try {
-			const dataForm = new FormData()
+		const urlFile = await fetchDomain(
+			JSON.parse(JSON.stringify(files)),
+			method,
+			urlReq,
+		)
 
-			files.forEach((file) => {
-				dataForm.append('files', file.file)
-			})
-
-			await fetch(urlReq, {
-				method,
-				body: dataForm,
-			})
-				.then((res) => {
-					if (!res.ok) {
-						throw new Error()
-					}
-
-					return res.blob()
-				})
-				.then((fileBlob) => {
-					// const urlFile = URL.createObjectURL(new Blob([fileBlob]))
-					// router.push(`/download/${urlFile.split('/').slice(3)}`)
-					router.push(`/download/file-example-download`)
-				})
-		} catch (error) {
-			console.error(error)
-		}
+		router.push(`/download/${urlFile}`)
 	}
+
+	if (isLoading) return <Loading />
 
 	return (
 		<>
 			<UploadItem />
 			<form
-				onSubmit={handleSubmit}
 				className={S.Upload__form}
+				onSubmit={handleSubmit}
 				method="POST"
 				action="/api/upload"
-				encType="multiplart/form-data"
+				encType="multipart/form-data"
 			>
 				<button
 					className={S.Upload__form__btn}

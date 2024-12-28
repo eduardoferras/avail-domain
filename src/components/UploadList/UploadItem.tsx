@@ -1,3 +1,4 @@
+'use client'
 import { FileItem } from '@/types'
 import Icon from '../UI/Icon'
 import S from './styles.module.scss'
