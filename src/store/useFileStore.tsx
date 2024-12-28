@@ -12,5 +12,6 @@ export const useFileStore = create<FileStore>((set) => ({
 			set((state) => ({
 				files: state.files.filter((file) => file.id !== id),
 			})),
+		resetFile: () => set({ files: [] }),
 	},
 }))

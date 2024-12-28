@@ -17,5 +17,6 @@ export interface FileStore {
 	actions: {
 		addFile: (file: FileItem) => void
 		removeFile: (id: FileItem['id']) => void
+		resetFile: () => void
 	}
 }
