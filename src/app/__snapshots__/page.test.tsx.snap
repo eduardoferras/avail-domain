@@ -21,7 +21,7 @@ exports[`Page should be rendered correctly 1`] = `
       <form
         action="/api/upload"
         class="Upload__form"
-        enctype="multiplart/form-data"
+        enctype="multipart/form-data"
         method="POST"
       >
         <button
