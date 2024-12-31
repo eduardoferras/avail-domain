@@ -12,22 +12,25 @@ export async function fetchDomain(
 			dataForm.append('files', file.file)
 		})
 
-		await fetch(urlReq, {
-			method,
-			body: dataForm,
-		})
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error()
-				}
+		// await fetch(urlReq, {
+		// 	method,
+		// 	body: dataForm,
+		// })
+		// 	.then((res) => {
+		// 		if (!res.ok) {
+		// 			throw new Error()
+		// 		}
 
-				return res.blob()
-			})
-			.then((fileBlob) => {
-				// const urlFile = URL.createObjectURL(new Blob([fileBlob]))
-				// router.push(`/download/${urlFile.split('/').slice(3)}`)
-				return 'file-example-download'
-			})
+		// 		return res.blob()
+		// 	})
+		// 	.then((fileBlob) => {
+		// 		const urlFile = URL.createObjectURL(new Blob([fileBlob]))
+		// 			.split('/')
+		// 			.slice(3)
+		// 		return 'file-example-download'
+		// 	})
+
+		return 'file-example-download'
 	} catch (error) {
 		console.error(error)
 	}

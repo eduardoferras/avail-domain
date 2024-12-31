@@ -38,20 +38,20 @@ export default function UploadList() {
 	async function handleSubmit(
 		e: React.FormEvent<HTMLFormElement>,
 	): Promise<void> {
-		setLoading(true)
 		e.preventDefault()
+		setLoading(true)
 
 		const { method, action: urlReq } = e.currentTarget
 
 		if (!files.length) return
 
-		const urlFile = await fetchDomain(
-			JSON.parse(JSON.stringify(files)),
-			method,
-			urlReq,
-		)
-
-		router.push(`/download/${urlFile}`)
+		await fetchDomain(files, method, urlReq)
+			.then((res) => {
+				router.push(`/download/${res}`)
+			})
+			.finally(() => {
+				setLoading(false)
+			})
 	}
 
 	return (
