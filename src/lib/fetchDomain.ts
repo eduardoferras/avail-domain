@@ -29,8 +29,6 @@ export async function fetchDomain(
 				return 'file-example-download'
 			})
 	} catch (error) {
-		console.log('ronaldo')
-
 		console.error(error)
 	}
 }
