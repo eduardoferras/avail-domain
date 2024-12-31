@@ -1,4 +1,4 @@
-import { useFileStore } from '@/store/useFileStore'
+import { useFileStore } from '@/store/file.store'
 
 const useRemoveFile = () => {
 	return useFileStore((state) => state.actions.removeFile)
