@@ -3,6 +3,7 @@ import '@/styles/globals.scss'
 import { openSans } from '@/fonts'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import Loading from '@/components/UI/Loading'
 
 export const metadata: Metadata = {
 	title: 'Avail Domain - Verificar disponibilidade domínio no Registro.br',
@@ -19,7 +20,7 @@ export default function RootLayout({
 		<html lang="pt-BR" className={openSans.className}>
 			<body>
 				<Header />
-				{children}
+				<Loading>{children}</Loading>
 				<Footer />
 			</body>
 		</html>

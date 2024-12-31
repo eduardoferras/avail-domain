@@ -6,15 +6,15 @@ import { useRouter } from 'next/navigation'
 import UploadItem from './UploadItem'
 import useAddFile from '@/hooks/File/useAddFile'
 import useListFile from '@/hooks/File/useListFile'
-import Loading from '../UI/Loading'
 import { fetchDomain } from '@/lib/fetchDomain'
+import useSetLoading from '@/hooks/Loading/useSetLoading'
 
 export default function UploadList() {
-	const [isLoading, setIsLoading] = useState(false)
 	const hiddenInputFile = useRef<HTMLInputElement>(null)
 	const [message, setMessage] = useState('')
 	const router = useRouter()
 	const addFile = useAddFile()
+	const setLoading = useSetLoading()
 
 	const files = useListFile()
 
@@ -38,7 +38,7 @@ export default function UploadList() {
 	async function handleSubmit(
 		e: React.FormEvent<HTMLFormElement>,
 	): Promise<void> {
-		setIsLoading(true)
+		setLoading(true)
 		e.preventDefault()
 
 		const { method, action: urlReq } = e.currentTarget
@@ -53,8 +53,6 @@ export default function UploadList() {
 
 		router.push(`/download/${urlFile}`)
 	}
-
-	if (isLoading) return <Loading />
 
 	return (
 		<>
