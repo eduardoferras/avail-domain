@@ -20,3 +20,10 @@ export interface FileStore {
 		resetFile: () => void
 	}
 }
+
+export interface LoadingStore {
+	isLoading: boolean
+	actions: {
+		setLoading: (isLoading: boolean) => void
+	}
+}
