@@ -1,4 +1,4 @@
-import { useLoadingStore } from '@/store/loading.store'
+import { useLoadingStore } from '@/stores/loading.store'
 
 const useSetLoading = () => {
 	return useLoadingStore((state) => state.actions.setLoading)

@@ -1,4 +1,4 @@
-import { useLoadingStore } from '@/store/loading.store'
+import { useLoadingStore } from '@/stores/loading.store'
 
 const useIsLoading = () => {
 	return useLoadingStore((state) => state.isLoading)
