@@ -28,6 +28,16 @@ describe('UploadList behavior', () => {
 
 		expect(itens).toHaveLength(1)
 	})
+
+	it('should render a list of files after multiple files have been selected', () => {
+		;(useListFile as jest.Mock).mockReturnValue([...files])
+
+		renderUploadList()
+
+		const itens = screen.queryAllByRole('listitem')
+
+		expect(itens).toHaveLength(2)
+	})
 })
 
 const files = [
