@@ -1,4 +1,5 @@
 import S from './page.module.scss'
+import UploadFile from '@/components/UploadFile'
 import UploadList from '@/components/UploadList'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
 					domínios registrados.
 				</p>
 				<UploadList />
+				<UploadFile />
 			</section>
 		</main>
 	)

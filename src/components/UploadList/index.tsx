@@ -1,98 +1,41 @@
 'use client'
-import { ChangeEvent, useRef, useState } from 'react'
+import { FileItem } from '@/types'
+import Icon from '../UI/Icon'
 import S from './styles.module.scss'
-import { nanoid } from 'nanoid'
-import { useRouter } from 'next/navigation'
-import UploadItem from './UploadItem'
-import useAddFile from '@/hooks/File/useAddFile'
+import useRemoveFile from '@/hooks/File/useRemoveFile'
 import useListFile from '@/hooks/File/useListFile'
-import { fetchDomain } from '@/lib/fetchDomain'
-import useSetLoading from '@/hooks/Loading/useSetLoading'
 
 export default function UploadList() {
-	const hiddenInputFile = useRef<HTMLInputElement>(null)
-	const [message, setMessage] = useState('')
-	const router = useRouter()
-	const addFile = useAddFile()
-	const setLoading = useSetLoading()
-
+	const removeFile = useRemoveFile()
 	const files = useListFile()
-
-	function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
-		const fileList = e.target.files
-
-		if (!fileList) return
-
-		Array.from(fileList).forEach((file) => {
-			addFile({
-				file,
-				name: file.name,
-				id: nanoid(),
-			})
-		})
-
-		setMessage('Arquivo adicionado')
-		if (hiddenInputFile.current) hiddenInputFile.current.value = ''
-	}
-
-	async function handleSubmit(
-		e: React.FormEvent<HTMLFormElement>,
-	): Promise<void> {
-		e.preventDefault()
-		setLoading(true)
-
-		const { method, action: urlReq } = e.currentTarget
-
-		if (!files.length) return
-
-		await fetchDomain(files, method, urlReq)
-			.then((res) => {
-				router.push(`/download/${res}`)
-			})
-			.finally(() => {
-				setLoading(false)
-			})
-	}
 
 	return (
 		<>
-			<UploadItem />
-			<form
-				className={S.Upload__form}
-				onSubmit={handleSubmit}
-				method="POST"
-				action="/api/upload"
-				encType="multipart/form-data"
-			>
-				<button
-					className={S.Upload__form__btn}
-					onClick={() => hiddenInputFile.current?.click()}
-					type="button"
-				>
-					{files.length > 0
-						? 'Adicionar Arquivo Excel'
-						: 'Selecionar Arquivo Excel'}
-				</button>
-				{files.length > 0 && (
-					<button type="submit" className={S.Upload__form__btn}>
-						Consultar Nomes
-					</button>
-				)}
-				<input
-					ref={hiddenInputFile}
-					className={S.Upload__form__btn__file}
-					type="file"
-					id="uploadFile"
-					multiple
-					onChange={handleFileChange}
-					accept="
-									.xlsx,
-									.xls,
-									application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
-									application/vnd.ms-excel"
-					aria-hidden
-				/>
-			</form>
+			{/* <span className={S.Message} role="log" aria-live="assertive" aria-atomic="true">
+				{message ? message : 'teste'}
+			</span> */}
+			{files.length > 0 && (
+				<ul className={S.Upload__list} aria-label="Lista arquivos adicionados">
+					{files.map((file: FileItem) => (
+						<li key={file.name} className={S.Upload__list__item}>
+							<Icon ariahidden alt="" name="excel" width="32" height="32" />
+							<span className={S.Upload__list__item__name}>{file.name}</span>
+							<button
+								className={S.Upload__list__item__btn}
+								aria-label="Remover arquivo"
+								onClick={() => removeFile(file.name)}
+							>
+								<Icon
+									className={S.Upload__list__item__btn__remove}
+									alt=""
+									name="remove"
+									ariahidden
+								/>
+							</button>
+						</li>
+					))}
+				</ul>
+			)}
 		</>
 	)
 }

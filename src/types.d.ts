@@ -7,16 +7,16 @@ export interface IconElement extends SVGProps<SVGSVGElement> {
 }
 
 export interface FileItem {
-	id: string
 	name: string
 	file: File
+	size: number
 }
 
 export interface FileStore {
 	files: FileItem[]
 	actions: {
 		addFile: (file: FileItem) => void
-		removeFile: (id: FileItem['id']) => void
+		removeFile: (name: FileItem['name']) => void
 		resetFile: () => void
 	}
 }

@@ -8,9 +8,9 @@ export const useFileStore = create<FileStore>((set) => ({
 			set((state) => ({
 				files: [...state.files, file],
 			})),
-		removeFile: (id) =>
+		removeFile: (name) =>
 			set((state) => ({
-				files: state.files.filter((file) => file.id !== id),
+				files: state.files.filter((file) => file.name !== name),
 			})),
 		resetFile: () => set({ files: [] }),
 	},
