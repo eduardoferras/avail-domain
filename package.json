@@ -9,7 +9,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "test": "jest --config ./jest/jest.config.ts",
-    "test:watch": "jest --config ./jest/jest.config.ts --watch",
+    "test:watch": "jest --config ./jest/jest.config.ts --watchAll",
     "prepare": "husky"
   },
   "dependencies": {
