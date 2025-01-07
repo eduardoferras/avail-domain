@@ -38,6 +38,17 @@ describe('UploadList behavior', () => {
 
 		expect(itens).toHaveLength(2)
 	})
+
+	it('should remove one file from list when remove button is clicked', () => {
+		;(useListFile as jest.Mock).mockReturnValue([...files])
+
+		renderUploadList()
+
+		const btnRemove = screen.queryAllByRole('button')
+		fireEvent.click(btnRemove[0])
+
+		expect(mockedUseRemoveFile).toHaveBeenCalledTimes(1)
+	})
 })
 
 const files = [
