@@ -33,12 +33,11 @@
 - [Sass](https://sass-lang.com/) - Styles
 - [Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction) - React State Manager
 - [Sheetjs](https://sheetjs.com/) - Handle Spreadsheets
-- [nanoid](https://www.npmjs.com/package/nanoid) - Unique string ID Generator
 - [Jest](https://jestjs.io/) - Test
 - [ESlint](https://eslint.org/) - Linter
 - [Prettier](https://prettier.io/) - Code Formatter
-- [husky](https://typicode.github.io/husky/) - GitHooks
-- [commitlint](https://commitlint.js.org/) - Commit Formatter
+- [Husky](https://typicode.github.io/husky/) - GitHooks
+- [commitlint](https://commitlint.js.org/) - Lint Commit Messages
 
 ## Accessibility
 

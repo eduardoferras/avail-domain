@@ -35,12 +35,11 @@
 - [Sass](https://sass-lang.com/) - Estilos
 - [Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction) - Gereciador de estados React
 - [Sheetjs](https://sheetjs.com/) - Manipular planilhas
-- [nanoid](https://www.npmjs.com/package/nanoid) - Gerador de ID Único
 - [Jest](https://jestjs.io/) - Testes
 - [ESlint](https://eslint.org/) - Linter
 - [Prettier](https://prettier.io/) - Formatar Código
-- [husky](https://typicode.github.io/husky/) - GitHooks
-- [commitlint](https://commitlint.js.org/) - Formatar Commits
+- [Husky](https://typicode.github.io/husky/) - GitHooks
+- [commitlint](https://commitlint.js.org/) - Lint Mensagens Commit
 
 ## Acessibilidade
 
