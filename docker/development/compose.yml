@@ -1,5 +1,5 @@
 services:
-  app:
+  availdomain:
     container_name: availdomain
     build:
       context: ../../
