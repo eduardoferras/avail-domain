@@ -5,3 +5,9 @@ jest.mock('next/navigation', () => ({
 		prefetch: () => null,
 	}),
 }))
+
+jest.mock('nanoid', () => {
+	return {
+		nanoid: () => {},
+	}
+})

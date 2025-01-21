@@ -7,9 +7,8 @@ export interface IconElement extends SVGProps<SVGSVGElement> {
 }
 
 export interface FileItem {
-	name: string
+	id: string
 	file: File
-	size: number
 }
 
 export interface FileStore {

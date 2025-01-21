@@ -1,5 +1,5 @@
 'use client'
-import { ChangeEvent, useRef, useState } from 'react'
+import { useRef } from 'react'
 import S from './styles.module.scss'
 import { useRouter } from 'next/navigation'
 import useAddFile from '@/hooks/File/useAddFile'
@@ -9,31 +9,10 @@ import useSetLoading from '@/hooks/Loading/useSetLoading'
 
 export default function UploadFile() {
 	const hiddenInputFile = useRef<HTMLInputElement>(null)
-	const [message, setMessage] = useState('')
 	const router = useRouter()
 	const addFile = useAddFile()
 	const setLoading = useSetLoading()
-
 	const files = useListFile()
-
-	function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
-		const fileList = e.target.files
-
-		if (!fileList) return
-
-		Array.from(fileList).forEach((file) => {
-			if (file.size === 0) return
-
-			addFile({
-				file,
-				name: file.name,
-				size: file.size,
-			})
-		})
-
-		setMessage('Arquivo adicionado')
-		if (hiddenInputFile.current) hiddenInputFile.current.value = ''
-	}
 
 	async function handleSubmit(
 		e: React.FormEvent<HTMLFormElement>,
@@ -69,11 +48,11 @@ export default function UploadFile() {
 				onClick={() => hiddenInputFile.current?.click()}
 				type="button"
 			>
-				{files.length > 0
+				{files && files.length > 0
 					? 'Adicionar Arquivo Excel'
 					: 'Selecionar Arquivo Excel'}
 			</button>
-			{files.length > 0 && (
+			{files && files.length > 0 && (
 				<button type="submit" className={S.Upload__form__btn}>
 					Consultar Nomes
 				</button>
@@ -86,11 +65,11 @@ export default function UploadFile() {
 				data-testid="uploadFile"
 				multiple
 				accept=".xlsx,
-									.xls,
-									application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
-									application/vnd.ms-excel"
+								.xls,
+								application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+								application/vnd.ms-excel"
 				aria-hidden
-				onChange={handleFileChange}
+				onChange={(e) => addFile(e.target.files as FileList)}
 			/>
 		</form>
 	)

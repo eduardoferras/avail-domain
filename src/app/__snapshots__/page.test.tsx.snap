@@ -31,7 +31,7 @@ exports[`Page should be rendered correctly 1`] = `
           Selecionar Arquivo Excel
         </button>
         <input
-          accept=".xlsx,          .xls,          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,          application/vnd.ms-excel"
+          accept=".xlsx,         .xls,         application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,         application/vnd.ms-excel"
           aria-hidden="true"
           class="Upload__form__btn__file"
           data-testid="uploadFile"

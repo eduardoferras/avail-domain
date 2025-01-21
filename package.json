@@ -8,11 +8,12 @@
     "start": "NODE_ENV=production next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "test": "NODE_ENV=test jest --config ./jest/jest.config.ts",
-    "test:watch": "NODE_ENV=test jest --config ./jest/jest.config.ts --watchAll",
+    "test": "NODE_ENV=test jest --verbose --config ./jest/jest.config.ts",
+    "test:watch": "NODE_ENV=test jest --verbose --config ./jest/jest.config.ts --watchAll",
     "prepare": "husky"
   },
   "dependencies": {
+    "nanoid": "^5.0.9",
     "next": "~14.2.15",
     "react": "^18",
     "react-dom": "^18",
@@ -38,7 +39,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.2.5",
     "sass": "^1.76.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

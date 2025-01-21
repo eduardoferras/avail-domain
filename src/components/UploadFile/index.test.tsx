@@ -7,8 +7,16 @@ import {
 } from '@testing-library/react'
 import UploadFile from '.'
 import useListFile from '@/hooks/File/useListFile'
+import { userEvent } from '@testing-library/user-event'
 
 jest.mock('@/hooks/File/useListFile')
+
+const mockedUseAddFile = jest.fn()
+
+jest.mock('@/hooks/File/useAddFile', () => ({
+	__esModule: true,
+	default: () => mockedUseAddFile,
+}))
 
 const mockedUseSetLoading = jest.fn()
 
@@ -33,43 +41,37 @@ describe('UploadFile form behavior', () => {
 		jest.resetAllMocks()
 	})
 
-	it('should be possible to add files with different names', () => {
-		;(useListFile as jest.Mock).mockReturnValue([...files])
-
-		renderUploadFile()
-
-		// const submitbutton = screen.getByTestId('btnSubmit')
-		// fireEvent.click(submitbutton)
-
-		// expect(submitbutton).toBeInTheDocument()
-		// expect(mockedUseSetLoading).toHaveBeenCalledTimes(1)
-		// expect(mockedUseSetLoading).toHaveBeenCalledWith(true)
+	afterEach(() => {
+		jest.restoreAllMocks()
 	})
 
-	it('should not be possible add files with the same name', () => {
-		;(useListFile as jest.Mock).mockReturnValue([...files])
+	it('should be possible upload single file', async () => {
+		const user = userEvent.setup()
 
 		renderUploadFile()
 
-		// const submitbutton = screen.getByTestId('btnSubmit')
-		// fireEvent.click(submitbutton)
+		const inputFile = screen.queryByTestId('uploadFile') as HTMLInputElement
 
-		// expect(submitbutton).toBeInTheDocument()
-		// expect(mockedUseSetLoading).toHaveBeenCalledTimes(1)
-		// expect(mockedUseSetLoading).toHaveBeenCalledWith(true)
+		await user.upload(inputFile, files[0].file)
+
+		expect(inputFile.files?.length).toBe(1)
+		expect(inputFile.files?.item(0)).toBe(files[0].file)
+		expect(mockedUseAddFile).toHaveBeenCalledTimes(1)
 	})
 
-	it('should not be possible add files with size 0', () => {
-		;(useListFile as jest.Mock).mockReturnValue([...files])
+	it('should be possible upload multiple files', async () => {
+		const user = userEvent.setup()
 
 		renderUploadFile()
 
-		// const submitbutton = screen.getByTestId('btnSubmit')
-		// fireEvent.click(submitbutton)
+		const inputFile = screen.getByTestId('uploadFile') as HTMLInputElement
 
-		// expect(submitbutton).toBeInTheDocument()
-		// expect(mockedUseSetLoading).toHaveBeenCalledTimes(1)
-		// expect(mockedUseSetLoading).toHaveBeenCalledWith(true)
+		await user.upload(inputFile, [files[0].file, files[1].file])
+
+		expect(inputFile.files?.length).toBe(2)
+		expect(inputFile.files?.item(0)).toBe(files[0].file)
+		expect(inputFile.files?.item(1)).toBe(files[1].file)
+		expect(mockedUseAddFile).toHaveBeenCalledTimes(1)
 	})
 
 	it('should not be possible check domains without having files selected', () => {
@@ -77,9 +79,9 @@ describe('UploadFile form behavior', () => {
 
 		renderUploadFile()
 
-		const submitbutton = screen.queryByTestId('btnSubmit')
+		const btnSubmit = getBtnSubmit()
 
-		expect(submitbutton).toBeNull()
+		expect(btnSubmit).toBeNull()
 	})
 
 	it('should be possible check domains if having files selected', () => {
@@ -87,49 +89,53 @@ describe('UploadFile form behavior', () => {
 
 		renderUploadFile()
 
-		const btnSubmit = screen.getByRole('button', { name: /Consultar Nomes/i })
+		const btnSubmit = getBtnSubmit()
 
 		expect(btnSubmit).toBeInTheDocument()
+		expect(btnSubmit).toHaveAttribute('type', 'submit')
 	})
 
 	it('should show a spinner loading when submit button is clicked', async () => {
 		;(useListFile as jest.Mock).mockReturnValue([...files])
+		const user = userEvent.setup()
 
 		renderUploadFile()
 
 		const btnSubmit = getBtnSubmit()
-		fireEvent.click(btnSubmit)
+		await user.click(btnSubmit)
 
 		expect(btnSubmit).toBeInTheDocument()
+		expect(btnSubmit).toHaveAttribute('type', 'submit')
 		expect(mockedUseSetLoading).toHaveBeenNthCalledWith(1, true)
-		expect(mockedUseSetLoading).toHaveBeenCalledTimes(1)
 	})
 
-	it('should hide the spinner loading after finishing submiting form', async () => {
+	it('should hide spinner loading after finishing form submiting', async () => {
 		;(useListFile as jest.Mock).mockReturnValue([...files])
+		const user = userEvent.setup()
 
 		renderUploadFile()
 
 		const btnSubmit = getBtnSubmit()
-		fireEvent.click(btnSubmit)
+		await user.click(btnSubmit)
 
 		expect(btnSubmit).toBeInTheDocument()
-		await waitFor(() =>
-			expect(mockedUseSetLoading).toHaveBeenNthCalledWith(2, false),
-		)
-		await waitFor(() => expect(mockedUseSetLoading).toHaveBeenCalledTimes(2))
+		expect(btnSubmit).toHaveAttribute('type', 'submit')
+		expect(mockedUseSetLoading).toHaveBeenNthCalledWith(2, false)
+		expect(mockedUseSetLoading).toHaveBeenCalledTimes(2)
 	})
 
 	it('should navigation to another page when submit button is clicked', async () => {
 		;(useListFile as jest.Mock).mockReturnValue([...files])
+		const user = userEvent.setup()
 
 		renderUploadFile()
 
 		const btnSubmit = getBtnSubmit()
-		fireEvent.click(btnSubmit)
+		await user.click(btnSubmit)
 
 		expect(btnSubmit).toBeInTheDocument()
-		await waitFor(() => expect(mockedUseRouterPush).toHaveBeenCalledTimes(1))
+		expect(btnSubmit).toHaveAttribute('type', 'submit')
+		expect(mockedUseRouterPush).toHaveBeenCalledTimes(1)
 	})
 
 	/*
@@ -146,15 +152,13 @@ describe('UploadFile form behavior', () => {
 
 const files = [
 	{
-		id: '1',
-		name: 'file1.xlsx',
+		id: 1,
 		file: new File(['file'], 'file1.xlsx', {
 			type: 'xlsx',
 		}),
 	},
 	{
-		id: '2',
-		name: 'file2.xlsx',
+		id: 2,
 		file: new File(['file'], 'file2.xlsx', {
 			type: 'xlsx',
 		}),
@@ -166,5 +170,7 @@ export function renderUploadFile() {
 }
 
 export function getBtnSubmit() {
-	return screen.getByRole('button', { name: /Consultar Nomes/i })
+	return screen.queryByRole('button', {
+		name: /Consultar Nomes/i,
+	}) as HTMLButtonElement
 }
