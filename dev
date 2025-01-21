@@ -6,6 +6,7 @@ function option_help() {
     echo
     echo "$0 start              Start the development server"
     echo "$0 stop               Stop the development server"
+    echo "$0 enter              Enter the development server"
     echo "$0 docker <command>   Execute commands inside Docker container"
     echo
     echo "Unknow commands are passed to the docker compose"
@@ -18,12 +19,14 @@ if [ $# -gt 0 ]; then
         option_help
     elif [ "$1" == "start" ]; then
         docker compose -f docker/development/compose.yml up -d --build \
-        && docker compose -f docker/development/compose.yml exec app bash
+        && docker compose -f docker/development/compose.yml exec availdomain bash
     elif [ "$1" == "stop" ]; then
         docker compose -f docker/development/compose.yml down
+		elif [ "$1" == "enter" ]; then
+		docker compose -f docker/development/compose.yml exec availdomain bash
     elif [ "$1" == "docker" ]; then
         shift 1
-        docker compose -f docker/development/compose.yml run --rm app "$@"
+        docker compose -f docker/development/compose.yml run --rm availdomain "$@"
     else
         docker compose -f docker/development/compose.yml "$@"
    fi
