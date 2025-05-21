@@ -1,4 +1,4 @@
-import { IconElement } from '@/types'
+import IconElement from "@/interfaces/IconElement";
 
 export default function Icon({
 	name,
@@ -11,5 +11,5 @@ export default function Icon({
 			<title>{alt}</title>
 			<use href={`/images/svg/sprite.svg#${name}`} />
 		</svg>
-	)
+	);
 }

@@ -1,4 +1,4 @@
-import { FileItem } from '@/types'
+import FileItem from "@/interfaces/FileItem";
 
 export async function fetchDomain(
 	files: FileItem[],
@@ -6,11 +6,11 @@ export async function fetchDomain(
 	urlReq: string,
 ) {
 	try {
-		const dataForm = new FormData()
+		const dataForm = new FormData();
 
 		files.forEach((file) => {
-			dataForm.append('files', file.file)
-		})
+			dataForm.append("files", file.file);
+		});
 
 		// await fetch(urlReq, {
 		// 	method,
@@ -30,8 +30,8 @@ export async function fetchDomain(
 		// 		return 'file-example-download'
 		// 	})
 
-		return 'file-example-download'
+		return "file-example-download";
 	} catch (error) {
-		console.error(error)
+		console.error(error);
 	}
 }
