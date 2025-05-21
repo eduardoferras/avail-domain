@@ -1,6 +1,6 @@
 export default interface LoadingStore {
-	isLoading: boolean;
+	isLoading: boolean
 	actions: {
-		setLoading: (isLoading: boolean) => void;
-	};
+		setLoading: (isLoading: boolean) => void
+	}
 }

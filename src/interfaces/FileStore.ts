@@ -1,10 +1,10 @@
-import FileItem from "./FileItem";
+import FileItem from './FileItem'
 
 export default interface FileStore {
-	files: FileItem[];
+	files: FileItem[]
 	actions: {
-		addFile: (file: FileItem) => void;
-		removeFile: (id: FileItem["id"]) => void;
-		resetFile: () => void;
-	};
+		addFile: (file: FileItem) => void
+		removeFile: (id: FileItem['id']) => void
+		resetFile: () => void
+	}
 }

@@ -1,4 +1,4 @@
 export default interface FileItem {
-	id: string;
-	file: File;
+	id: string
+	file: File
 }

@@ -1,5 +1,5 @@
-import FileStore from "@/interfaces/FileStore";
-import { create } from "zustand";
+import FileStore from '@/interfaces/FileStore'
+import { create } from 'zustand'
 
 export const useFileStore = create<FileStore>((set) => ({
 	files: [],
@@ -14,4 +14,4 @@ export const useFileStore = create<FileStore>((set) => ({
 			})),
 		resetFile: () => set({ files: [] }),
 	},
-}));
+}))
