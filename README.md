@@ -12,7 +12,6 @@
 	🚧  Status: 🚀 In progress...  🚧
 </h4>
 
-[Português](./README-pt-BR.md) •
 [Layout](#layout) •
 [Technologies](#technologies) •
 [Accessibility](#accessibility) •
