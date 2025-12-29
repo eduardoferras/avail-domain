@@ -38,7 +38,6 @@
 - [Jest](https://jestjs.io/) - Testes
 - [ESlint](https://eslint.org/) - Linter
 - [Prettier](https://prettier.io/) - Formatar Código
-- [Husky](https://typicode.github.io/husky/) - GitHooks
 - [commitlint](https://commitlint.js.org/) - Lint Mensagens Commit
 
 ## Acessibilidade
