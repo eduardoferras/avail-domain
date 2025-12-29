@@ -24,6 +24,12 @@
 		"baseUrl": ".",
     "paths": {
 			"@/images/*": ["public/images/*"],
+			"@components/*": ["src/components/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@styles/*": ["src/styles/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@stores/*": ["src/stores/*"],
+			"@lib/*": ["src/lib/*"],
       "@/*": ["src/*"],
     }
   },
