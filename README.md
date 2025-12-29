@@ -36,7 +36,6 @@
 - [Jest](https://jestjs.io/) - Test
 - [ESlint](https://eslint.org/) - Linter
 - [Prettier](https://prettier.io/) - Code Formatter
-- [commitlint](https://commitlint.js.org/) - Lint Commit Messages
 
 ## Accessibility
 
