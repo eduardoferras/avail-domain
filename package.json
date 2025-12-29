@@ -4,5 +4,8 @@
   "private": true,
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8"
+  }
 }
