@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	sassOptions: {
-		prependData: `@import "@/styles/main";`,
+		prependData: `@use "@styles/main.scss" as *;`,
 	},
 }
 

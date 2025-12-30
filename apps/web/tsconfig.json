@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
-		"removeComments": true,
-		"strictNullChecks": true,
-		"noImplicitAny": true,
-		"noEmitOnError": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -14,31 +18,57 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-		"baseUrl": ".",
+    "baseUrl": ".",
     "paths": {
-			"@/images/*": ["public/images/*"],
-			"@components/*": ["src/components/*"],
-      "@interfaces/*": ["src/interfaces/*"],
-      "@styles/*": ["src/styles/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@stores/*": ["src/stores/*"],
-			"@lib/*": ["src/lib/*"],
-      "@/*": ["src/*"],
+      "@/images/*": [
+        "public/images/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@interfaces/*": [
+        "src/interfaces/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@stores/*": [
+        "src/stores/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "target": "ES2017"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "Node"
     }
   },
-	 "ts-node": {
-		"compilerOptions": {
-			"module": "ESNext",
-			"moduleResolution": "Node"
-		}
-	},
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/tests/resolver.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/tests/resolver.js",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
