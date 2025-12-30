@@ -21,7 +21,8 @@ export async function POST(req: NextRequest) {
     cb(null, `${obj}\n`);
   };
 
-  const blobStream = filesBuffer.forEach((file) => {
+  // biome-ignore lint/suspicious/useIterableCallbackReturn: legacy code
+  const blobStream = filesBuffer.map((file) => {
     const wb = read(file, { dense: true });
     const firstWs = wb.Sheets[wb.SheetNames[0]];
     stream.set_readable(Readable);
