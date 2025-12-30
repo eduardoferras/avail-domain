@@ -1,23 +1,23 @@
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
-import Footer from '.'
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import Footer from ".";
 
-describe('Footer', () => {
-	it('renders a paragraph', () => {
-		renderFooter()
+describe("Footer", () => {
+  it("renders a paragraph", () => {
+    renderFooter();
 
-		const paragraph = screen.getByRole('paragraph')
+    const paragraph = screen.getByRole("paragraph");
 
-		expect(paragraph).toBeInTheDocument()
-	})
+    expect(paragraph).toBeInTheDocument();
+  });
 
-	it('should be rendered correctly', () => {
-		const { container } = renderFooter()
+  it("should be rendered correctly", () => {
+    const { container } = renderFooter();
 
-		expect(container).toMatchSnapshot()
-	})
-})
+    expect(container).toMatchSnapshot();
+  });
+});
 
 function renderFooter() {
-	return render(<Footer />)
+  return render(<Footer />);
 }
