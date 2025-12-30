@@ -17,10 +17,14 @@
 
 ### Web
 
-- Next.js - React Framework
+- Next.js - React.js Framework
 - TypeScript
 - Sass - Styles
 - Zustand - React State Manager
 - Sheetjs - Handle Spreadsheets
 - Jest - Test
-- ESLint - Linter and Formatter
+- Biome - Linter and Formatter
+
+### Api
+
+- Laravel - PHP Framework
