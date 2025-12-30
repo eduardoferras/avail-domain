@@ -1,7 +1,7 @@
-import { useLoadingStore } from '@/stores/loading.store'
+import { useLoadingStore } from "@/stores/loading.store";
 
 const useSetLoading = () => {
-	return useLoadingStore((state) => state.actions.setLoading)
-}
+  return useLoadingStore((state) => state.actions.setLoading);
+};
 
-export default useSetLoading
+export default useSetLoading;

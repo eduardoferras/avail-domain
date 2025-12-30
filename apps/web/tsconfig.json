@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "removeComments": true,
     "strictNullChecks": true,
@@ -27,30 +23,14 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/images/*": [
-        "public/images/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@interfaces/*": [
-        "src/interfaces/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@stores/*": [
-        "src/stores/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@/*": [
-        "src/*"
-      ]
+      "@/images/*": ["public/images/*"],
+      "@components/*": ["src/components/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@styles/*": ["src/styles/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@stores/*": ["src/stores/*"],
+      "@lib/*": ["src/lib/*"],
+      "@/*": ["src/*"]
     },
     "target": "ES2017"
   },
@@ -68,7 +48,5 @@
     "src/tests/resolver.js",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

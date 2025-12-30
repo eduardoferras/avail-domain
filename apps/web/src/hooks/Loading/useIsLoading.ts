@@ -1,7 +1,7 @@
-import { useLoadingStore } from '@/stores/loading.store'
+import { useLoadingStore } from "@/stores/loading.store";
 
 const useIsLoading = () => {
-	return useLoadingStore((state) => state.isLoading)
-}
+  return useLoadingStore((state) => state.isLoading);
+};
 
-export default useIsLoading
+export default useIsLoading;

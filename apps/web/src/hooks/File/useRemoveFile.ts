@@ -1,7 +1,7 @@
-import { useFileStore } from '@/stores/file.store'
+import { useFileStore } from "@/stores/file.store";
 
 const useRemoveFile = () => {
-	return useFileStore((state) => state.actions.removeFile)
-}
+  return useFileStore((state) => state.actions.removeFile);
+};
 
-export default useRemoveFile
+export default useRemoveFile;

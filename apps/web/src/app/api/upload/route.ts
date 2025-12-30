@@ -1,53 +1,43 @@
-import { read, stream } from 'xlsx'
-import { Readable, Transform, Writable } from 'stream'
-import { createWriteStream } from 'fs'
-import { headers } from 'next/headers'
-import { NextApiRequest, NextApiResponse } from 'next'
-import { NextRequest, NextResponse } from 'next/server'
-import path from 'path'
+import { Readable, Transform } from "node:stream";
+import { type NextRequest, NextResponse } from "next/server";
+import { read, stream } from "xlsx";
 
-export async function POST(req: NextRequest, res: NextResponse) {
-	const fileFormData = await req.formData()
-	const files = fileFormData.getAll('files') as File[]
+export async function POST(req: NextRequest) {
+  const fileFormData = await req.formData();
+  const files = fileFormData.getAll("files") as File[];
 
-	if (!files.length) {
-		return NextResponse.json({ error: 'File is required.' }, { status: 400 })
-	}
+  if (!files.length) {
+    return NextResponse.json({ error: "File is required." }, { status: 400 });
+  }
 
-	const filesBuffer = await Promise.all(
-		files.map(async (file) => {
-			return await file.arrayBuffer()
-		}),
-	)
+  const filesBuffer = await Promise.all(
+    files.map(async (file) => {
+      return await file.arrayBuffer();
+    }),
+  );
 
-	var trans = new Transform({ writableObjectMode: true })
-	trans._transform = function (obj, e, cb) {
-		cb(null, obj + '\n')
-	}
+  var trans = new Transform({ writableObjectMode: true });
+  trans._transform = (obj, _e, cb) => {
+    cb(null, `${obj}\n`);
+  };
 
-	const outStream = new Writable({
-		write(chunk, encoding, callback) {
-			callback()
-		},
-	})
+  const blobStream = filesBuffer.forEach((file) => {
+    const wb = read(file, { dense: true });
+    const firstWs = wb.Sheets[wb.SheetNames[0]];
+    stream.set_readable(Readable);
+    stream
+      .to_json(firstWs, { header: 1, blankrows: false })
+      .pipe(trans)
+      .pipe(process.stdout);
+  }) as unknown as Blob;
 
-	const blobStream = filesBuffer.map((file) => {
-		const wb = read(file, { dense: true })
-		const firstWs = wb.Sheets[wb.SheetNames[0]]
-		stream.set_readable(Readable)
-		stream
-			.to_json(firstWs, { header: 1, blankrows: false })
-			.pipe(trans)
-			.pipe(process.stdout)
-	}) as unknown as Blob
+  const newHeaders = new Headers();
+  newHeaders.set("Content-Disposition", `attachment; filename="teste.xlsx"`);
+  newHeaders.set("Content-Type", "xlsx");
 
-	const newHeaders = new Headers()
-	newHeaders.set('Content-Disposition', `attachment; filename="teste.xlsx"`)
-	newHeaders.set('Content-Type', 'xlsx')
-
-	return new NextResponse(blobStream, {
-		headers: newHeaders,
-	})
+  return new NextResponse(blobStream, {
+    headers: newHeaders,
+  });
 }
 
 // return NextResponse.next({

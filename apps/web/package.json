@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production next start",
     "lint": "biome check",
-    "format": "biome format --write",
+    "lint:fix": "biome check --write",
     "test": "NODE_ENV=test jest --verbose --config ./jest/jest.config.ts",
     "test:watch": "NODE_ENV=test jest --verbose --config ./jest/jest.config.ts --watchAll"
   },

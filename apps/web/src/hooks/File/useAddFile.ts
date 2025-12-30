@@ -1,17 +1,17 @@
-import { useFileStore } from '@/stores/file.store'
-import { nanoid } from 'nanoid'
+import { nanoid } from "nanoid";
+import { useFileStore } from "@/stores/file.store";
 
 const useAddFile = () => {
-	const addFile = useFileStore((state) => state.actions.addFile)
+  const addFile = useFileStore((state) => state.actions.addFile);
 
-	return (fileList: FileList) => {
-		Array.from(fileList).forEach((file) => {
-			return addFile({
-				id: nanoid(),
-				file,
-			})
-		})
-	}
-}
+  return (fileList: FileList) => {
+    Array.from(fileList).map((file) => {
+      return addFile({
+        id: nanoid(),
+        file,
+      });
+    });
+  };
+};
 
-export default useAddFile
+export default useAddFile;
