@@ -6,9 +6,9 @@ import Loading from "@/components/UI/Loading";
 import { openSans } from "@/fonts";
 
 export const metadata: Metadata = {
-  title: "Avail Domain - Verificar disponibilidade domínio no Registro.br",
+  title: "Avail Domain - Verificar disponibilidade domínios",
   description:
-    "Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.",
+    "Importe uma lista de nomes para verificar se já possuem domínios registrados.",
 };
 
 export default function RootLayout({
