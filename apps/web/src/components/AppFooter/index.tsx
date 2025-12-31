@@ -1,6 +1,6 @@
 import S from "./styles.module.scss";
 
-export default function Footer() {
+export default function AppFooter() {
   return (
     <footer className={S.footer}>
       <p className={S.footer__content}>

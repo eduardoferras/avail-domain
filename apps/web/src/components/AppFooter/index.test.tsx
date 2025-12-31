@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import Footer from ".";
+import AppFooter from ".";
 
 describe("Footer", () => {
   it("renders a paragraph", () => {
@@ -19,5 +19,5 @@ describe("Footer", () => {
 });
 
 function renderFooter() {
-  return render(<Footer />);
+  return render(<AppFooter />);
 }

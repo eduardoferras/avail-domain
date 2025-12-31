@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.scss";
+import AppFooter from "@components/AppFooter";
 import AppHeader from "@components/AppHeader";
-import Footer from "@/components/Footer";
-import Loading from "@/components/UI/Loading";
+import Loading from "@components/UI/Loading";
 import { openSans } from "@/fonts";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout({
       <body>
         <AppHeader />
         <Loading>{children}</Loading>
-        <Footer />
+        <AppFooter />
       </body>
     </html>
   );
