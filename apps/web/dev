@@ -46,7 +46,7 @@ case "$1" in
     docker compose ps
     ;;
   docker)
-    shift 2
+    shift 1
     docker compose exec "$SERVICE_NAME" "$@"
     ;;
 esac
