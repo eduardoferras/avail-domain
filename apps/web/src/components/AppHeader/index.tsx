@@ -4,7 +4,7 @@ import useResetFile from "@/hooks/File/useResetFile";
 import Icon from "../UI/Icon";
 import S from "./styles.module.scss";
 
-export default function Header() {
+export default function AppHeader() {
   return (
     <header className={S.header}>
       <Link href="/" onClick={useResetFile()}>

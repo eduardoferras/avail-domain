@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.scss";
+import AppHeader from "@components/AppHeader";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Loading from "@/components/UI/Loading";
 import { openSans } from "@/fonts";
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={openSans.className}>
       <body>
-        <Header />
+        <AppHeader />
         <Loading>{children}</Loading>
         <Footer />
       </body>

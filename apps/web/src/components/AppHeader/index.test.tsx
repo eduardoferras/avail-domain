@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import Header from ".";
+import AppHeader from ".";
 
 const mockedUseResetFile = jest.fn();
 
@@ -27,5 +27,5 @@ describe("Header behavior", () => {
 });
 
 export function renderHeader() {
-  return render(<Header />);
+  return render(<AppHeader />);
 }
