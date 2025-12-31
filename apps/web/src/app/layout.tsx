@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import "@/styles/globals.scss";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Loading from "@/components/UI/Loading";
+import AppFooter from "@components/AppFooter";
+import AppHeader from "@components/AppHeader";
+import Loading from "@components/UI/Loading";
 import { openSans } from "@/fonts";
 
 export const metadata: Metadata = {
-  title: "Avail Domain - Verificar disponibilidade domínio no Registro.br",
+  title: "Avail Domain - Verificar disponibilidade domínios",
   description:
-    "Importe uma lista de nomes em Excel para verificar se já possuem domínios registrados.",
+    "Importe uma lista de nomes para verificar se já possuem domínios registrados.",
 };
 
 export default function RootLayout({
@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={openSans.className}>
       <body>
-        <Header />
+        <AppHeader />
         <Loading>{children}</Loading>
-        <Footer />
+        <AppFooter />
       </body>
     </html>
   );
