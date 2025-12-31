@@ -1,35 +1,52 @@
-#!/bin/bash
-function option_help() {
-    echo "$0 <command>"
-    echo
-    echo "Usage:"
-    echo
-    echo "$0 start              Start the development server"
-    echo "$0 stop               Stop the development server"
-    echo "$0 enter              Enter the development server"
-    echo "$0 docker <command>   Execute commands inside Docker container"
-    echo
-    echo "Unknow commands are passed to the docker compose"
-    echo "$0 <command Docker>"
-    exit 1
+#!/usr/bin/env bash
+set -euo pipefail
+
+SERVICE_NAME="web"
+
+function show_help() {
+  echo
+  echo "Usage:"
+	echo
+  echo "  $0 start              				Start the development server"
+  echo "  $0 stop               				Stop the development server"
+	echo "  $0 restart <service>           			Restart the development server"
+  echo "  $0 enter <service>    				Enter the container shell (backend, app, postgres...)"
+	echo "  $0 logs  <service>    				Show service logs (backend, app, postgres...)"
+  echo "  $0 ps                 				List running services"
+  echo "  $0 docker <service> <command> 			Run command inside the container"
+  echo
+  exit 0
 }
 
-if [ $# -gt 0 ]; then
-    if [ "$1" == "help" ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
-        option_help
-    elif [ "$1" == "start" ]; then
-        docker compose -f docker/development/compose.yml up -d --build \
-        && docker compose -f docker/development/compose.yml exec availdomain bash
-    elif [ "$1" == "stop" ]; then
-        docker compose -f docker/development/compose.yml down
-		elif [ "$1" == "enter" ]; then
-		docker compose -f docker/development/compose.yml exec availdomain bash
-    elif [ "$1" == "docker" ]; then
-        shift 1
-        docker compose -f docker/development/compose.yml run --rm availdomain "$@"
-    else
-        docker compose -f docker/development/compose.yml "$@"
-   fi
-else
-    option_help
+if [[ $# -eq 0 ]]; then
+  show_help
 fi
+
+case "$1" in
+  help|-h|--help)
+    show_help
+    ;;
+  start)
+    docker compose up -d --build \
+    && docker compose exec "$SERVICE_NAME" sh
+    ;;
+  stop)
+    docker compose down
+    ;;
+	restart)
+		docker compose restart "$SERVICE_NAME"
+	;;
+  enter)
+		docker compose exec "$SERVICE_NAME" sh
+		;;
+	logs)
+		docker compose logs "$SERVICE_NAME" -f
+		;;
+  ps)
+    docker compose ps
+    ;;
+  docker)
+    shift 2
+    docker compose exec "$SERVICE_NAME" "$@"
+    ;;
+esac
