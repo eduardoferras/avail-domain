@@ -6,7 +6,7 @@ services:
     environment:
       NODE_ENV: development
     volumes:
-      - ../../../../:/home/node/app
+      - ../../:/home/node/app
     command: ['sh', '-c', 'npm ci -w web && npm run dev -w web']
     tty: true
     stdin_open: true
