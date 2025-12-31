@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function show_help() {
+  echo
+  echo "Usage:"
+	echo
+  echo "  $0 start              				Start the development server"
+  echo "  $0 stop               				Stop the development server"
+	echo "  $0 restart <service>           			Restart the development server"
+  echo "  $0 enter <service>    				Enter the container shell (backend, app, postgres...)"
+	echo "  $0 logs  <service>    				Show service logs (backend, app, postgres...)"
+  echo "  $0 ps                 				List running services"
+  echo "  $0 docker <service> <command> 			Run command inside the container"
+  echo
+  exit 0
+}
+
+if [[ $# -eq 0 ]]; then
+  show_help
+fi
+
+case "$1" in
+  help|-h|--help)
+    show_help
+    ;;
+  start)
+    docker compose up -d --build
+    ;;
+  stop)
+    docker compose down
+    ;;
+	restart)
+		docker compose restart ${2:-$SERVICE_NAME}
+	;;
+  enter)
+		docker compose exec ${2:-$SERVICE_NAME} sh
+		;;
+	logs)
+		docker compose logs ${2:-$SERVICE_NAME} -f
+		;;
+  ps)
+    docker compose ps
+    ;;
+  docker)
+    shift 2
+    docker compose exec ${2:-$SERVICE_NAME} "$@"
+    ;;
+esac
