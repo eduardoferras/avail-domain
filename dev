@@ -43,7 +43,7 @@ case "$1" in
     docker compose ps
     ;;
   docker)
-    shift 2
-    docker compose exec ${2:-$SERVICE_NAME} "$@"
+    shift 1
+    docker compose exec ${1:-$SERVICE_NAME} "${@:2}"
     ;;
 esac
