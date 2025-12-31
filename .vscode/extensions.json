@@ -1,7 +1,8 @@
 {
-	"recommendations": [
-		"github.vscode-github-actions",
-		"editorconfig.editorconfig",
-		"biomejs.biome"
-	]
+  "recommendations": [
+    "github.vscode-github-actions",
+    "editorconfig.editorconfig",
+    "biomejs.biome",
+    "laravel.vscode-laravel"
+  ]
 }

@@ -1,0 +1,14 @@
+services:
+  web:
+    container_name: avail-domain-web
+    image: node:24.12-alpine3.23
+    working_dir: /home/node/app
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ../../:/home/node/app
+    command: ['sh', '-c', 'npm ci -w web && npm run dev -w web']
+    tty: true
+    stdin_open: true
+    ports:
+      - 3000:3000

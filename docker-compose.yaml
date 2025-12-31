@@ -1,0 +1,3 @@
+include:
+  - apps/api/docker-compose.yaml
+  - apps/web/docker-compose.yaml
